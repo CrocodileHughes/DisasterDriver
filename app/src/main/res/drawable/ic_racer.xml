@@ -1,0 +1,53 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Car Body -->
+    <path
+        android:fillColor="#FF1A1A1A"
+        android:pathData="M1,17 L4,10 H20 L23,17 H1Z" />
+
+    <!-- Rear Window -->
+    <path
+        android:fillColor="#FF333333"
+        android:pathData="M5.5,9.5 L6.5,7 H17.5 L18.5,9.5 H5.5Z" />
+
+    <!-- Spoiler -->
+    <path
+        android:fillColor="#FF111111"
+        android:pathData="M3.5,10.2 L20.5,10.2 L20,9.2 L4,9.2 Z" />
+
+    <!-- Taillights -->
+    <!-- Left housing -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M4,15.5 C3.5,15.5 3.5,14 4,14 H8 C8.5,14 8.5,15.5 8,15.5 H4Z"/>
+    <!-- Left inner lights -->
+    <path
+        android:fillColor="#FFB71C1C"
+        android:pathData="M4.5,15 C4.2,15 4.2,14.5 4.5,14.5 H6 C6.3,14.5 6.3,15 6,15 H4.5Z" />
+    <path
+        android:fillColor="#FFB71C1C"
+        android:pathData="M6.5,15 C6.2,15 6.2,14.5 6.5,14.5 H8 C8.3,14.5 8.3,15 8,15 H6.5Z" />
+
+    <!-- Right housing -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,15.5 C15.5,15.5 15.5,14 16,14 H20 C20.5,14 20.5,15.5 20,15.5 H16Z"/>
+    <!-- Right inner lights -->
+    <path
+        android:fillColor="#FFB71C1C"
+        android:pathData="M16.5,15 C16.2,15 16.2,14.5 16.5,14.5 H18 C18.3,14.5 18.3,15 18,15 H16.5Z" />
+    <path
+        android:fillColor="#FFB71C1C"
+        android:pathData="M18.5,15 C18.2,15 18.2,14.5 18.5,14.5 H20 C20.3,14.5 20.3,15 20,15 H18.5Z" />
+
+    <!-- Diffuser fins -->
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1"
+        android:pathData="M9,17 v1 M11,17 v1 M13,17 v1 M15,17 v1" />
+
+</vector>

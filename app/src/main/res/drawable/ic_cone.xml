@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+  <!-- Cone Body (Orange) -->
+  <path
+      android:fillColor="#FFFF5722"
+      android:pathData="M18,18 L6,18 L12,2 Z" />
+
+  <!-- Cone Stripe (White) -->
+  <path
+      android:fillColor="#FFFFFFFF"
+      android:pathData="M15.5,12 L8.5,12 L12,6 Z" />
+
+  <!-- Cone Base (Orange) -->
+  <path
+      android:fillColor="#FFBF360C"
+      android:pathData="M20,20 L4,20 L6,18 L18,18 Z" />
+
+</vector>

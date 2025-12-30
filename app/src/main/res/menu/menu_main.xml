@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_sunset"
+        android:title="Sunset"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_ocean_wave"
+        android:title="Ocean Wave"
+        app:showAsAction="never" />
+</menu>
