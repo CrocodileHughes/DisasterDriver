@@ -59,32 +59,18 @@
         android:layout_marginTop="80dp"
         android:background="#FFFFFF" />
 
-    <ImageView
-        android:id="@+id/cone1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:src="@drawable/ic_cone" />
 
-    <ImageView
-        android:id="@+id/cone2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cone1"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="200dp"
-        android:src="@drawable/ic_cone" />
 
-    <ImageView
-        android:id="@+id/cone3"
+    <TextView
+        android:id="@+id/score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cone2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="200dp"
-        android:src="@drawable/ic_cone" />
+        android:layout_margin="16dp"
+        android:text="@string/initial_score"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/countdown_text"
@@ -94,13 +80,55 @@
         android:textColor="#FFFFFF"
         android:textSize="60sp" />
 
-    <ImageView
+    <Button
+        android:id="@+id/play_again_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countdown_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/play_again"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/play_again_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/menu"
+        android:visibility="gone" />
+
+    <FrameLayout
         android:id="@+id/player_car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android.layout_centerHorizontal="true"
-        android:src="@drawable/ic_racer" />
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/player_car_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_racer_body"
+            android:contentDescription="@string/player_car_body_desc" />
+
+        <ImageView
+            android:id="@+id/player_car_decal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_racer_decal"
+            android:visibility="gone"
+            android:contentDescription="@string/player_car_decal_desc" />
+
+        <ImageView
+            android:id="@+id/player_car_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_racer_details"
+            android:contentDescription="@string/player_car_details_desc" />
+    </FrameLayout>
 
     <ImageButton
         android:id="@+id/left_button"
@@ -108,7 +136,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_arrow_left" />
+        android:src="@drawable/ic_arrow_left"
+        android:contentDescription="@string/move_left_button_desc" />
 
     <ImageButton
         android:id="@+id/right_button"
@@ -116,6 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_arrow_right" />
+        android:src="@drawable/ic_arrow_right"
+        android:contentDescription="@string/move_right_button_desc" />
 
 </RelativeLayout>
