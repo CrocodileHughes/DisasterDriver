@@ -39,7 +39,8 @@
         android:layout_width="10dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
-        android:background="#FFFFFF" />
+        android:layout_marginTop="80dp"
+        android:background="#ffffffff" />
 
     <View
         android:id="@+id/line2"
@@ -48,7 +49,7 @@
         android:layout_below="@+id/line1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:background="#FFFFFF" />
+        android:background="#ffffffff" />
 
     <View
         android:id="@+id/line3"
@@ -57,7 +58,7 @@
         android:layout_below="@+id/line2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:background="#FFFFFF" />
+        android:background="#ffffffff" />
 
 
 

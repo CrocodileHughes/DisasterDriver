@@ -270,9 +270,9 @@ public class MainActivity extends AppCompatActivity {
                 for (View line : repeatingLines) {
                     line.setTranslationY(line.getTranslationY() + verticalMove);
                     if (verticalMove > 0 && line.getTop() + line.getTranslationY() > screenHeight) {
-                        line.setTranslationY(line.getTranslationY() - totalPatternHeight - 200);
+                        line.setTranslationY(line.getTranslationY() - totalPatternHeight);
                     } else if (verticalMove < 0 && line.getBottom() + line.getTranslationY() < 0) {
-                        line.setTranslationY(line.getTranslationY() + totalPatternHeight + 200);
+                        line.setTranslationY(line.getTranslationY() + totalPatternHeight);
                     }
                 }
                 startLine.setTranslationY(startLine.getTranslationY() + verticalMove);
