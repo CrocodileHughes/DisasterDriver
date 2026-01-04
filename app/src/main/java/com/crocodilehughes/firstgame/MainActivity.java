@@ -124,7 +124,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
         synthesizer = new EngineSoundSynthesizer();
+
+        SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+        boolean isMuted = prefs.getBoolean("IS_MUTED", false);
+        synthesizer.setMuted(isMuted);
+
+        ImageButton muteButton = findViewById(R.id.mute_button);
+        updateMuteButton(muteButton, isMuted);
+
+        muteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean newMutedState = !prefs.getBoolean("IS_MUTED", false);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("IS_MUTED", newMutedState);
+                editor.apply();
+
+                if (synthesizer != null) {
+                    synthesizer.setMuted(newMutedState);
+                }
+                updateMuteButton(muteButton, newMutedState);
+            }
+        });
+
         startCountdown();
+    }
+
+    private void updateMuteButton(ImageButton button, boolean isMuted) {
+        button.setImageResource(isMuted ? R.drawable.ic_mute_on : R.drawable.ic_mute_off);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -100,7 +101,33 @@ public class MenuActivity extends AppCompatActivity {
         if (synthesizer == null) {
             synthesizer = new EngineSoundSynthesizer();
         }
+
+        boolean isMuted = prefs.getBoolean("IS_MUTED", false);
+        synthesizer.setMuted(isMuted);
+
+        ImageButton muteButton = findViewById(R.id.mute_button);
+        updateMuteButton(muteButton, isMuted);
+
+        muteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean newMutedState = !prefs.getBoolean("IS_MUTED", false);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("IS_MUTED", newMutedState);
+                editor.apply();
+
+                if (synthesizer != null) {
+                    synthesizer.setMuted(newMutedState);
+                }
+                updateMuteButton(muteButton, newMutedState);
+            }
+        });
+
         synthesizer.playHealingTheme();
+    }
+
+    private void updateMuteButton(ImageButton button, boolean isMuted) {
+        button.setImageResource(isMuted ? R.drawable.ic_mute_on : R.drawable.ic_mute_off);
     }
 
     @Override

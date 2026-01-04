@@ -67,11 +67,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_margin="16dp"
         android:text="@string/initial_score"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
+
+    <ImageButton
+        android:id="@+id/mute_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_mute_off"
+        android:contentDescription="Mute Button"
+        android:scaleType="fitCenter"
+        android:padding="8dp"/>
 
     <TextView
         android:id="@+id/countdown_text"

@@ -63,9 +63,14 @@ public class EngineSoundSynthesizer {
     }
 
     private volatile double frequency = 220.0; // Base frequency
+    private volatile boolean isMuted = false;
 
     public void setFrequency(double newFrequency) {
         this.frequency = newFrequency;
+    }
+
+    public void setMuted(boolean muted) {
+        this.isMuted = muted;
     }
 
     private void generateTone() {
@@ -81,6 +86,26 @@ public class EngineSoundSynthesizer {
         short[] buffer = new short[refillSize];
 
         while (isRunning) {
+            if (isMuted) {
+                // Determine sleep time based on buffer size and sample rate to avoid busy loop
+                // 1024 samples / 44100 Hz = ~23ms
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // Write silence to keep track running smoothly if needed,
+                // or just skip writing (but AudioTrack might underrun).
+                // Writing silence is safer.
+                for (int i = 0; i < refillSize; i++) {
+                    buffer[i] = 0;
+                }
+                if (audioTrack != null) {
+                    audioTrack.write(buffer, 0, refillSize);
+                }
+                continue;
+            }
+
             currentFrequency = frequency;
             increment = 2.0 * Math.PI * currentFrequency / SAMPLE_RATE;
 
@@ -143,6 +168,19 @@ public class EngineSoundSynthesizer {
                 melodyTrack.play();
 
                 for (int i = 0; i < melodyFreqs.length; i++) {
+                    // Check if muted inside the loop
+                    if (isMuted) {
+                        // Play valid silence to keep timing or just sleep
+                        // Sleeping is easier to keep the "sadness" timing even if silent
+                        int currentNoteDuration = (i == melodyFreqs.length - 1) ? durationMs * 2 : durationMs;
+                        try {
+                            Thread.sleep(currentNoteDuration + 50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        continue;
+                    }
+
                     double freq = melodyFreqs[i];
                     double increment = 2.0 * Math.PI * freq / SAMPLE_RATE;
                     double angle = 0;
@@ -238,6 +276,14 @@ public class EngineSoundSynthesizer {
             }
 
             private void playNote(double freq, int ms) {
+                if (isMuted) {
+                    try {
+                        Thread.sleep(ms);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                }
                 double increment = 2.0 * Math.PI * freq / SAMPLE_RATE;
                 double angle = 0;
                 int numSamples = (int) (SAMPLE_RATE * (ms / 1000.0));
