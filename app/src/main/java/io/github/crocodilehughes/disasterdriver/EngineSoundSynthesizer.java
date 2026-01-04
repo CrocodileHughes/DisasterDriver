@@ -1,4 +1,4 @@
-package com.crocodilehughes.firstgame;
+package io.github.crocodilehughes.disasterdriver;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;

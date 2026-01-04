@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.crocodilehughes.firstgame"
+    namespace = "io.github.crocodilehughes.disasterdriver"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.crocodilehughes.firstgame"
+        applicationId = "io.github.crocodilehughes.disasterdriver"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
