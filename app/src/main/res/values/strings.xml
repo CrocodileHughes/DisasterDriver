@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">First Game</string>
+    <string name="app_name">Disaster Driver</string>
     <string name="initial_score">Score: 0</string>
     <string name="play_again">Play Again</string>
     <string name="menu">Menu</string>

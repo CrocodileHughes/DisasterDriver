@@ -20,6 +20,7 @@ public class MenuActivity extends AppCompatActivity {
     private int currentColorIndex = 0;
     private int currentDecalColorIndex = 0;
     private boolean isDecalEnabled = false;
+    private EngineSoundSynthesizer synthesizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,5 +96,19 @@ public class MenuActivity extends AppCompatActivity {
         long highScore = prefs.getLong("HIGH_SCORE", 0);
         TextView highScoreText = findViewById(R.id.high_score_text);
         highScoreText.setText("High Score: " + highScore);
+
+        if (synthesizer == null) {
+            synthesizer = new EngineSoundSynthesizer();
+        }
+        synthesizer.playHealingTheme();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (synthesizer != null) {
+            synthesizer.stop();
+            synthesizer = null;
+        }
     }
 }

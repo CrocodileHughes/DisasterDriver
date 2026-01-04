@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "First Game"
+rootProject.name = "Disaster Driver"
 include(":app")

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private int carColor = Color.RED;
     private int decalColor = Color.WHITE;
     private boolean isDecalEnabled = false;
+    private EngineSoundSynthesizer synthesizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +123,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        synthesizer = new EngineSoundSynthesizer();
         startCountdown();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (synthesizer != null) {
+            synthesizer.stop();
+        }
     }
 
     private void startCountdown() {
@@ -140,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 countdownText.setVisibility(View.GONE);
                 raceStarted = true;
                 raceStartTime = System.currentTimeMillis();
+                synthesizer.start();
                 startRoadAnimation();
             }
         }.start();
@@ -203,6 +214,13 @@ public class MainActivity extends AppCompatActivity {
 
                 final float roadMoveSpeed = 15.0f; // This is the vertical speed
                 final float carDriftSpeed = 5.0f;
+
+                // Engine Sound Logic
+                if (isTurningLeft || isTurningRight) {
+                    synthesizer.setFrequency(180.0); // Lower pitch on turn
+                } else {
+                    synthesizer.setFrequency(220.0); // Base pitch
+                }
 
                 // Base Noise: Large, slow turns
                 float noise1 = getNoise(totalTime * 0.2f);
@@ -323,5 +341,8 @@ public class MainActivity extends AppCompatActivity {
         countdownText.setVisibility(View.VISIBLE);
         playAgainButton.setVisibility(View.VISIBLE);
         menuButton.setVisibility(View.VISIBLE);
+        if (synthesizer != null) {
+            synthesizer.playSadMelody();
+        }
     }
 }
